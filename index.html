@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <title>Raindrops</title>
+  </head>
+  <body>
+    <header id="header" class="header header-new-game">
+      <h1 id="h1" class="h1 h1-new-game">Raindrops Game</h1>
+
+    </header>
+    <main id="game" class="game">
+      <section id="canvas" class="canvas-wrapper">
+        <canvas id="land"><p></p></canvas>
+      </section>
+
+      <section id="score" class="score-wrapper">
+        <img src="assets/image/star.svg" alt="" /> <span>Score:</span>
+      </section>
+
+      <section class="button-wrapper">
+        <div id="buttonForm" class="button-form">
+          <input
+            id="display"
+            class="button-form_display"
+            value=""
+            type="text"
+            readonly
+          />
+          <button id="btnClear" class="button-form_btn btnClear">Clear</button>
+          <button id="btnDel" class="button-form_btn btnDel">Delete</button>
+          <button id="btn7" class="button-form_btn btn7">7</button>
+          <button id="btn8" class="button-form_btn btn8">8</button>
+          <button id="btn9" class="button-form_btn btn9">9</button>
+          <button id="btn4" class="button-form_btn btn4">4</button>
+          <button id="btn5" class="button-form_btn btn5">5</button>
+          <button id="btn6" class="button-form_btn btn6">6</button>
+          <button id="btn1" class="button-form_btn btn1">1</button>
+          <button id="btn2" class="button-form_btn btn2">2</button>
+          <button id="btn3" class="button-form_btn btn3">3</button>
+          <button id="btn0" class="button-form_btn btn0">0</button>
+          <button id="btnEnter" class="button-form_btn btnEnter">Enter</button>
+        </div>
+      </section>
+      <section id="startScreen" class="start-screen start-screen-new-game">
+        <section class="fullscreen">
+          <button
+            id="playButton"
+            class="button-form_btn start-screen-button start-screen-button-new-game"
+          >
+           <h5>Play</h5>
+          </button>
+          <button
+            id="howButton"
+            class="button-form_btn start-screen-button start-screen-button-new-game">
+            <h5>How to play</h5>
+          </button>
+        </section>
+        <section id="option" class="option option-new-game">
+          <button id="soundOnOff" class="button-form_btn sound-off"></button>
+          <button id="fullOnOff" class="button-form_btn fullscreen-on"></button>
+        </section>
+      </section>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times</span>
+          <p class="text"> In Raindrops, you quickly solve arithmetic problems to keep the rain
+             from causing a flood. The more equations you solve, the faster they start
+            to appear.
+            In order to reach higher levels, you must get faster at mental calculations
+             — making the game a good way to challenge your numerical calculation skills.
+             <br>*Remember* The yellow drop is a bonus. with its correct solution, all other drops on the screen disappear!</br>
+            </p>
+      </div>
+        </div>
+
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
