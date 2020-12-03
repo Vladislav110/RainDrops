@@ -256,13 +256,9 @@ function drawBackground() {
 }
 
 import { animateWave, waterLevel, cw, c, ch, w, FIIL_BLUE } from './animatewave.js';
-
-
-import { drawLand, animateWave, setStorage, drop1, drop2, drop3, drop4, waterLevel, score } from './drawLand';
-
-import Drop from './classDrop';
-
-import DropExp from './classDropNew.js';
+import { drawLand, animateWave, setStorage, drop1, drop2, drop3, drop4, waterLevel, score } from './drawLand.js';
+import {Drop, score, waterLevel,ch,c,cw} from './classDrop.js';
+import {DropExp, c,} from './classDropNew.js';
 
 let drop1 = new Drop({});
 
