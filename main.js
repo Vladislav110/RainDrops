@@ -72,6 +72,10 @@ const modal = document.getElementById("myModal");
 const btn = document.getElementById("howButton");
 const span = document.getElementsByClassName("close")[0];
 
+document.addEventListener("DOMContentLoaded", () => {
+   document.getElementById("bla").style.display = "none";
+  });
+
 btn.onclick = function () {
     modal.style.display = "block";
 }
@@ -148,6 +152,7 @@ function addScore() {
 }
 
 function newGame() {
+    document.getElementById("bla").style.display = "block";
     operandFirst = "";
     display.value = "";
     while (dropAnswer.length > 0) {
@@ -255,18 +260,45 @@ function drawBackground() {
     c.drawImage(img, canvas.height / 25, canvas.height / 1.4, 600, 500); //рисуем картинку в канвас
 }
 
-import { animateWave, waterLevel, cw, c, ch, w, FIIL_BLUE } from './animatewave.js';
-import { drawLand, animateWave, setStorage, drop1, drop2, drop3, drop4, waterLevel, score } from './drawLand.js';
-import {Drop, score, waterLevel,ch,c,cw} from './classDrop.js';
-import {DropExp, c,} from './classDropNew.js';
+import { drawLand, setStorage, drop1, drop2, drop3, drop4, score } from './drawLand.js';
+import {Drop} from './classDrop.js';
+import {Drop, DropExp} from './classDropNew.js';
 
-let drop1 = new Drop({});
+let drop1 = new Drop({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c
+});
 
-let drop2 = new Drop({});
+let drop2 = new Drop({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c
+});
 
-let drop3 = new Drop({});
+let drop3 = new Drop({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c
+});
 
-let drop4 = new DropExp({});
+let drop4 = new DropExp({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c
+});
 let dropAnswer = [drop1.answer, drop2.answer, drop3.answer, drop4.answer];
 
 function buttonPress(e) {
