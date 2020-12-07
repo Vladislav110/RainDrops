@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #6a6d72;
+  background-image: url(../assets/image/night.jpg);
   font-family: 'Quicksand', sans-serif;
 }
 
