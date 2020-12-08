@@ -1,4 +1,4 @@
-export default function animateWave(waterLevel,cw, c, ch, w, FIIL_BLUE) {
+export default function animateWave(waterLevel,cw, c, ch, w) {
     function wave(waterLevel, increment) {
         for (let x = 0; x < cw; x++) {
             for (let y = waterLevel - 1; y < 20; y++) {

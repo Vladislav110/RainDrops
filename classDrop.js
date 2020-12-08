@@ -1,12 +1,15 @@
+const FILL_BLUE = "rgba(0,0,155, 0.5)";
+const FILL_DARK_BLUE = "rgba(0,0,60, 0.5)";
+
  export default class Drop {
     constructor(options) {
-        this.x = randomInt(280, cw - 30);
-        this.y = options.y = randomInt(-30, -550);
-        this.op1 = options.op1 = op1[randomInt(0, 19)];
-        this.op2 = options.op2 = op1[randomInt(0, 19)];
-        this.op = options.op = op[randomInt(0, 1)];
+        this.x = randomInt(280, options.cw - 30);
+        this.y = options.y;
+        this.op1 = options.op1;
+        this.op2 = options.op2;
+        this.op = options.op;
         this.speed = options.speed = 1;
-        this.c = options.c = c;
+        this.c = options.c;
         this.answer;
     }
 
@@ -83,4 +86,10 @@
     set ypos(ypos) {
         this.y += ypos + this.speed;
     }
+}
+
+function randomInt(min, max) {
+    // случайное число от min до (max+1)
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
 }

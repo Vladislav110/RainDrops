@@ -1,7 +1,6 @@
-const FILL_DARK_BLUE = "rgba(0,0,60, 0.5)";
-const FILL_BLUE = "rgba(0,0,155, 0.5)";
-const FILL_TURQUISE = "#22abcd";
-const FILL_ORANGE = "#f3d44a";
+import { drawLand } from './drawLand.js';
+import { default as Drop } from './classDrop.js';
+import { default as DropExp } from './classDropNew.js';
 
 let startScreen = document.getElementById("startScreen");
 let playButton = document.getElementById("playButton");
@@ -48,24 +47,20 @@ let answer = 0;
 let waterLevel = 9;
 let waterLevelUp = 60;
 let isPlayed = false; // игра запущена или нет
+let isPaused = false;
+let isMuted = false;
 let elem = document.documentElement;
 let isFullScreen = false;
 let c = canvas.getContext("2d");
 let x = 100;
 let y = 260;
 let indices = [];
+let presedButton;
 
 canvas.height = canvasWraper.offsetHeight; // на всю высоту экрана
 canvas.width = canvasWraper.offsetWidth; // на всю ширину canvasWraper
 let ch = canvas.height;
 let cw = canvas.width;
-
-let frequency = 0.008;
-let amplitude = 10;
-let increment1 = frequency;
-let increment2 = frequency;
-let w = 0.5;
-
 var fall;
 
 const modal = document.getElementById("myModal");
@@ -73,8 +68,8 @@ const btn = document.getElementById("howButton");
 const span = document.getElementsByClassName("close")[0];
 
 document.addEventListener("DOMContentLoaded", () => {
-   document.getElementById("bla").style.display = "none";
-  });
+    document.getElementById("bla").style.display = "none";
+});
 
 btn.onclick = function () {
     modal.style.display = "block";
@@ -151,6 +146,42 @@ function addScore() {
     }
 }
 
+let drop1 = new Drop({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c,
+});
+
+let drop2 = new Drop({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c
+});
+
+let drop3 = new Drop({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c
+});
+
+let drop4 = new DropExp({
+    cw: cw,
+    y: y,
+    op1: op1,
+    op: op,
+    speed: speed,
+    c: c
+});
+
 function newGame() {
     document.getElementById("bla").style.display = "block";
     operandFirst = "";
@@ -158,11 +189,47 @@ function newGame() {
     while (dropAnswer.length > 0) {
         dropAnswer.pop();
     }
+    c = canvas.getContext("2d");
+    //drop1 = new Drop({});
+    //drop2 = new Drop({});
+    //drop3 = new Drop({});
+    //drop4 = new DropExp({});
+    drop1 = new Drop({
+        cw: cw,
+        y: y,
+        op1: op1,
+        op: op,
+        speed: speed,
+        c: c,
+    });
 
-    drop1 = new Drop({});
-    drop2 = new Drop({});
-    drop3 = new Drop({});
-    drop4 = new DropExp({});
+    drop2 = new Drop({
+        cw: cw,
+        y: y,
+        op1: op1,
+        op: op,
+        speed: speed,
+        c: c
+    });
+
+    drop3 = new Drop({
+        cw: cw,
+        y: y,
+        op1: op1,
+        op: op,
+        speed: speed,
+        c: c
+    });
+
+    drop4 = new DropExp({
+        cw: cw,
+        y: y,
+        op1: op1,
+        op: op,
+        speed: speed,
+        c: c
+    });
+
     dropAnswer = [drop1.answer, drop2.answer, drop3.answer, drop4.answer];
     console.log(dropAnswer);
 
@@ -187,14 +254,15 @@ function newGame() {
     isPaused = false; //поставлена пауза
     isMuted = true; // звук выключен или нет
     elem = document.documentElement;
-    c = canvas.getContext("2d");
     header.classList.remove("header-new-game");
     h1.classList.remove("h1-new-game");
     startScreen.classList.remove("start-screen-new-game");
     playButton.classList.remove("start-screen-button-new-game");
     howButton.classList.remove("start-screen-button-new-game");
     option.classList.remove("option-new-game");
-    fall = setInterval(drawLand, 50);
+    fall = setInterval(() => {
+        drawLand(c, canvas, drop1, drop2, drop3, drop4, score, scoreDisplay, waterLevel);
+    }, 50);
     drop1.speed = 1;
     drop2.speed = 1;
     drop3.speed = 1;
@@ -250,55 +318,6 @@ fullscreen.addEventListener("click", () => {
     }
 });
 
-function drawBackground() {
-    c.fillStyle = FILL_TURQUISE;
-    c.fillRect(0, 0, canvas.width, canvas.height);
-    c.fill();
-
-    var img = new Image();
-    img.src = "assets/image/stone.svg";
-    c.drawImage(img, canvas.height / 25, canvas.height / 1.4, 600, 500); //рисуем картинку в канвас
-}
-
-import { drawLand, setStorage, drop1, drop2, drop3, drop4, score } from './drawLand.js';
-import {Drop} from './classDrop.js';
-import {Drop, DropExp} from './classDropNew.js';
-
-let drop1 = new Drop({
-    cw: cw,
-    y: y,
-    op1: op1,
-    op: op,
-    speed: speed,
-    c: c
-});
-
-let drop2 = new Drop({
-    cw: cw,
-    y: y,
-    op1: op1,
-    op: op,
-    speed: speed,
-    c: c
-});
-
-let drop3 = new Drop({
-    cw: cw,
-    y: y,
-    op1: op1,
-    op: op,
-    speed: speed,
-    c: c
-});
-
-let drop4 = new DropExp({
-    cw: cw,
-    y: y,
-    op1: op1,
-    op: op,
-    speed: speed,
-    c: c
-});
 let dropAnswer = [drop1.answer, drop2.answer, drop3.answer, drop4.answer];
 
 function buttonPress(e) {
