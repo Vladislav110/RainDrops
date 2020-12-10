@@ -201,6 +201,10 @@ function newGame() {
         op: op,
         speed: speed,
         c: c,
+        ch,
+        cw,
+        waterLevel,
+        waterLevelUp
     });
 
     drop2 = new Drop({
@@ -209,7 +213,11 @@ function newGame() {
         op1: op1,
         op: op,
         speed: speed,
-        c: c
+        c: c,
+        ch,
+        cw,
+        waterLevel,
+        waterLevelUp
     });
 
     drop3 = new Drop({
@@ -218,7 +226,11 @@ function newGame() {
         op1: op1,
         op: op,
         speed: speed,
-        c: c
+        c: c,
+        ch,
+        cw,
+        waterLevel,
+        waterLevelUp
     });
 
     drop4 = new DropExp({
@@ -227,7 +239,11 @@ function newGame() {
         op1: op1,
         op: op,
         speed: speed,
-        c: c
+        c: c,
+        ch,
+        cw,
+        waterLevel,
+        waterLevelUp
     });
 
     dropAnswer = [drop1.answer, drop2.answer, drop3.answer, drop4.answer];
