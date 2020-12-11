@@ -1,9 +1,9 @@
 const FILL_BLUE = "rgba(0,0,155, 0.5)";
 const FILL_TURQUISE = "#22abcd";
 let amplitude = 10;
+let frequency = 0.008;
 let increment1 = frequency;
 let increment2 = frequency;
-let frequency = 0.008;
 let w = 0.5;
 
 export function drawLand(c, canvas, drop1, drop2, drop3, drop4, score, scoreDisplay, waterLevel) {

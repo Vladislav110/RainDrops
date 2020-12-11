@@ -71,6 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("bla").style.display = "none";
 });
 
+
+playButton.onclick = function() {
+    document.getElementById("game").style.backgroundColor = 'gray';
+};
+
 btn.onclick = function () {
     modal.style.display = "block";
 }
@@ -190,10 +195,6 @@ function newGame() {
         dropAnswer.pop();
     }
     c = canvas.getContext("2d");
-    //drop1 = new Drop({});
-    //drop2 = new Drop({});
-    //drop3 = new Drop({});
-    //drop4 = new DropExp({});
     drop1 = new Drop({
         cw: cw,
         y: y,
