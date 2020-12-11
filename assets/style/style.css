@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url(../assets/image/night.jpg);
+  background-image: url("../assets/image/drop1.jpg");
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -249,7 +249,7 @@ header {
 .h1-new-game {
   position: absolute;
   top: 10%;
-  left: 40%;
+  left: 50%;
   text-align: center;
   font-size: 50px;
   font-family: 'Quicksand', sans-serif;
@@ -260,15 +260,15 @@ header {
   }
 }
 .start-screen-new-game {
-  position: fixed;
-  top: 200px;
-  left: 560px;
+  position: absolute;
+    top: 50%;
+    left: 50%;
   z-index: 1;
 }
 .start-screen-button-new-game {
   display: block;
   background-color: rgba(194, 179, 96, 0.836);
-  padding: 30px;
+  padding: 10px;
   font-family: 'Quicksand', sans-serif;
   font-size: 60px;
 }
