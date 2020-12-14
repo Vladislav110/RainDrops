@@ -70,9 +70,11 @@ const span = document.getElementsByClassName("close")[0];
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("bla").style.display = "none";
 });
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("h2").style.display = "none";
+});
 
-
-playButton.onclick = function() {
+playButton.onclick = function () {
     document.getElementById("game").style.backgroundColor = 'gray';
 };
 
@@ -189,6 +191,7 @@ let drop4 = new DropExp({
 
 function newGame() {
     document.getElementById("bla").style.display = "block";
+    document.getElementById("h1").style.display = "none";
     operandFirst = "";
     display.value = "";
     while (dropAnswer.length > 0) {
@@ -269,7 +272,7 @@ function newGame() {
     waterLevelUp = 60; // уровень поднятия воды для капель
     isPlayed = true; // игра запущена или нет
     isPaused = false; //поставлена пауза
-    isMuted = true; // звук выключен или нет
+    //isMuted = true; // звук выключен или нет
     elem = document.documentElement;
     header.classList.remove("header-new-game");
     h1.classList.remove("h1-new-game");
@@ -313,14 +316,14 @@ fullscreen.addEventListener("click", () => {
 
 let dropAnswer = [drop1.answer, drop2.answer, drop3.answer, drop4.answer];
 
-function checkWaterLevelUp (drop1, drop2, drop3, drop4){
+function checkWaterLevelUp(drop1, drop2, drop3, drop4) {
     if (drop1.y >= drop1.ch - drop1.waterLevelUp ||
-         drop2.y >= drop2.ch - drop2.waterLevelUp ||
-         drop3.y >= drop3.ch - drop3.waterLevelUp ||
-         drop4.y >= drop4.ch - drop4.waterLevelUp
-         ) {
-        waterLevelUp +=60;
-        waterLevel -=1;
+        drop2.y >= drop2.ch - drop2.waterLevelUp ||
+        drop3.y >= drop3.ch - drop3.waterLevelUp ||
+        drop4.y >= drop4.ch - drop4.waterLevelUp
+    ) {
+        waterLevelUp += 60;
+        waterLevel -= 1;
     }
 }
 
@@ -535,14 +538,15 @@ function chackAnswer(dropAnswer, userAnswer) {
         if (score > 0) {
             score -= 20;
         }
-        play(audioFalse);
-        audioFalse.currentTime = 0;
-
     }
 }
 
 export function gameOver() {
     isPlayed = false;
+    document.getElementById("game").style.display = "none";
+    document.getElementById("h2").style.display = "block";
+    document.getElementById("h1").style.display = "none";
+    
 
     drop1.ypos = randomInt(-30, -250);
     drop2.ypos = randomInt(-30, -250);
@@ -552,16 +556,7 @@ export function gameOver() {
     drop2.speed = 0;
     drop3.speed = 0;
     drop4.speed = 0;
-    header.classList.add("header-new-game");
-    h1.classList.add("h1-new-game");
-    startScreen.classList.add("start-screen-new-game");
-    playButton.classList.add("start-screen-button-new-game");
-    howButton.classList.add("start-screen-button-new-game");
-    option.classList.add("option-new-game");
-    if (localStorage.getItem("HiScore") > localStorage.getItem("Score")) {
-        setStorage("Score", score);
-    } else {
-        setStorage("HiScore", score);
-    }
-    clearInterval(fall);
-}
+
+};
+
+
