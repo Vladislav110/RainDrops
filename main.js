@@ -44,7 +44,7 @@ var op1 = [
 ];
 var op = ["+", "-", "*"];
 let answer = 0;
-let waterLevel = 9;
+let waterLevel = 12;
 let waterLevelUp = 60;
 let isPlayed = false; // игра запущена или нет
 let isPaused = false;
@@ -278,37 +278,13 @@ function newGame() {
     howButton.classList.remove("start-screen-button-new-game");
     option.classList.remove("option-new-game");
     fall = setInterval(() => {
+        checkWaterLevelUp(drop1, drop2, drop3, drop4);
         drawLand(c, canvas, drop1, drop2, drop3, drop4, score, scoreDisplay, waterLevel);
     }, 50);
     drop1.speed = 1;
     drop2.speed = 1;
     drop3.speed = 1;
     drop4.speed = 1;
-}
-
-function gameOver(drop1, drop2, drop3, drop4, score) {
-    isPlayed = false;
-
-    drop1.ypos = randomInt(-30, -250);
-    drop2.ypos = randomInt(-30, -250);
-    drop3.ypos = randomInt(-30, -250);
-    drop4.ypos = randomInt(-30, -250);
-    drop1.speed = 0;
-    drop2.speed = 0;
-    drop3.speed = 0;
-    drop4.speed = 0;
-    header.classList.add("header-new-game");
-    h1.classList.add("h1-new-game");
-    startScreen.classList.add("start-screen-new-game");
-    playButton.classList.add("start-screen-button-new-game");
-    howButton.classList.add("start-screen-button-new-game");
-    option.classList.add("option-new-game");
-    if (localStorage.getItem("HiScore") > localStorage.getItem("Score")) {
-        setStorage("Score", score);
-    } else {
-        setStorage("HiScore", score);
-    }
-    clearInterval(fall);
 }
 
 function setStorage(nameKey, valueKey) {
@@ -336,6 +312,17 @@ fullscreen.addEventListener("click", () => {
 });
 
 let dropAnswer = [drop1.answer, drop2.answer, drop3.answer, drop4.answer];
+
+function checkWaterLevelUp (drop1, drop2, drop3, drop4){
+    if (drop1.y >= drop1.ch - drop1.waterLevelUp ||
+         drop2.y >= drop2.ch - drop2.waterLevelUp ||
+         drop3.y >= drop3.ch - drop3.waterLevelUp ||
+         drop4.y >= drop4.ch - drop4.waterLevelUp
+         ) {
+        waterLevelUp +=60;
+        waterLevel -=1;
+    }
+}
 
 function buttonPress(e) {
     if (e.keyCode === undefined) {
@@ -433,32 +420,107 @@ function chackAnswer(dropAnswer, userAnswer) {
             switch (index) {
                 case 0:
                     drop1 = new Drop({
-                        y: randomInt(-30, -550),
+                        cw: cw,
+                        y: y,
+                        op1: op1,
+                        op: op,
+                        speed: speed,
+                        c: c,
+                        ch,
+                        cw,
+                        waterLevel,
+                        waterLevelUp
                     });
                     dropAnswer.splice(index, 1, drop1.answer);
                     console.log(dropAnswer);
                     addScore();
                     break;
                 case 1:
-                    drop2 = new Drop({});
+                    drop2 = new Drop({
+                        cw: cw,
+                        y: y,
+                        op1: op1,
+                        op: op,
+                        speed: speed,
+                        c: c,
+                        ch,
+                        cw,
+                        waterLevel,
+                        waterLevelUp
+                    });
                     dropAnswer.splice(index, 1, drop2.answer);
                     console.log(dropAnswer);
                     addScore();
                     break;
                 case 2:
-                    drop3 = new Drop({});
+                    drop3 = new Drop({
+                        cw: cw,
+                        y: y,
+                        op1: op1,
+                        op: op,
+                        speed: speed,
+                        c: c,
+                        ch,
+                        cw,
+                        waterLevel,
+                        waterLevelUp
+                    });
                     dropAnswer.splice(index, 1, drop3.answer);
                     console.log(dropAnswer);
                     addScore();
                     break;
                 case 3:
-                    drop1 = new Drop({});
+                    drop1 = new Drop({
+                        cw: cw,
+                        y: y,
+                        op1: op1,
+                        op: op,
+                        speed: speed,
+                        c: c,
+                        ch,
+                        cw,
+                        waterLevel,
+                        waterLevelUp
+                    });
                     dropAnswer.splice(0, 1, drop1.answer);
-                    drop2 = new Drop({});
+                    drop2 = new Drop({
+                        cw: cw,
+                        y: y,
+                        op1: op1,
+                        op: op,
+                        speed: speed,
+                        c: c,
+                        ch,
+                        cw,
+                        waterLevel,
+                        waterLevelUp
+                    });
                     dropAnswer.splice(1, 1, drop2.answer);
-                    drop3 = new Drop({});
+                    drop3 = new Drop({
+                        cw: cw,
+                        y: y,
+                        op1: op1,
+                        op: op,
+                        speed: speed,
+                        c: c,
+                        ch,
+                        cw,
+                        waterLevel,
+                        waterLevelUp
+                    });
                     dropAnswer.splice(2, 1, drop3.answer);
-                    drop4 = new DropExp({});
+                    drop4 = new DropExp({
+                        cw: cw,
+                        y: y,
+                        op1: op1,
+                        op: op,
+                        speed: speed,
+                        c: c,
+                        ch,
+                        cw,
+                        waterLevel,
+                        waterLevelUp
+                    });
                     dropAnswer.splice(3, 1, drop4.answer);
                     console.log(dropAnswer);
                     addScore();
@@ -477,4 +539,29 @@ function chackAnswer(dropAnswer, userAnswer) {
         audioFalse.currentTime = 0;
 
     }
+}
+
+export function gameOver() {
+    isPlayed = false;
+
+    drop1.ypos = randomInt(-30, -250);
+    drop2.ypos = randomInt(-30, -250);
+    drop3.ypos = randomInt(-30, -250);
+    drop4.ypos = randomInt(-30, -250);
+    drop1.speed = 0;
+    drop2.speed = 0;
+    drop3.speed = 0;
+    drop4.speed = 0;
+    header.classList.add("header-new-game");
+    h1.classList.add("h1-new-game");
+    startScreen.classList.add("start-screen-new-game");
+    playButton.classList.add("start-screen-button-new-game");
+    howButton.classList.add("start-screen-button-new-game");
+    option.classList.add("option-new-game");
+    if (localStorage.getItem("HiScore") > localStorage.getItem("Score")) {
+        setStorage("Score", score);
+    } else {
+        setStorage("HiScore", score);
+    }
+    clearInterval(fall);
 }

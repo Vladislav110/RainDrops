@@ -13,6 +13,7 @@ const FILL_DARK_BLUE = "rgba(0,0,60, 0.5)";
         this.ch = options.ch;
         this.cw = options.cw;
         this.waterLevelUp = options.waterLevelUp;
+        this.waterLevel = options.waterLevel;
         this.answer;
     }
 
@@ -35,7 +36,7 @@ const FILL_DARK_BLUE = "rgba(0,0,60, 0.5)";
         }
     }
 
-    get waterLevel() {
+    get waterLevelDrop() {
         if (this.y >= this.ch - this.waterLevelUp) {
             this.y = -this.ch;
             this.waterLevelUp += 60;

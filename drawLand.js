@@ -1,3 +1,5 @@
+import{gameOver} from "./main.js";
+
 const FILL_BLUE = "rgba(0,0,155, 0.5)";
 const FILL_TURQUISE = "#22abcd";
 let amplitude = 10;
@@ -15,10 +17,10 @@ export function drawLand(c, canvas, drop1, drop2, drop3, drop4, score, scoreDisp
     drop2.drawDrop;
     drop3.drawDrop;
     drop4.drawDrop;
-    drop1.waterLevel;
-    drop2.waterLevel;
-    drop3.waterLevel;
-    drop4.waterLevel;
+    drop1.waterLevelDrop;
+    drop2.waterLevelDrop;
+    drop3.waterLevelDrop;
+    drop4.waterLevelDrop;
     drop1.ypos = 0;
     drop2.ypos = 0;
     drop3.ypos = 0;
@@ -27,7 +29,7 @@ export function drawLand(c, canvas, drop1, drop2, drop3, drop4, score, scoreDisp
     scoreDisplay.innerHTML = ` <img src="assets/image/star.svg" alt="" /> <span>Score: ${score}</span>`;
 
     if (waterLevel <= 7) {
-        gameOver();
+        gameOver(drop1, drop2, drop3, drop4, score);
     }
 }
 
