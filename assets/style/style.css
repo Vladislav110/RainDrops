@@ -53,7 +53,7 @@ span {
   }
   .option {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -90,22 +90,6 @@ header {
   width: 50px;
   height: 50px;
   background: url(../image/fullscreen-exit.svg);
-  background-repeat: no-repeat;
-  outline-style: none;
-  border: none;
-}
-.sound-off {
-  width: 50px;
-  height: 50px;
-  background: url(../image/SoundOff.svg);
-  background-repeat: no-repeat;
-  outline-style: none;
-  border: none;
-}
-.sound-on {
-  width: 50px;
-  height: 50px;
-  background: url(../image/SoundOn.svg);
   background-repeat: no-repeat;
   outline-style: none;
   border: none;
@@ -197,7 +181,7 @@ header {
   }
 }
 .button-form_btn {
- margin: 5px;
+  margin: 5px;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
@@ -310,4 +294,14 @@ header {
   text-decoration: none;
   z-index: 9999;
   cursor: pointer;
+}
+
+.gameOver {
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 200px;
+  border-radius: 20px;
+  background-color: rgba(194, 179, 96, 0.6);
 }
