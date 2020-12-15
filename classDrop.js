@@ -41,7 +41,6 @@ const FILL_DARK_BLUE = "rgba(0,0,60, 0.5)";
             this.y = -this.ch;
             this.waterLevelUp += 60;
             this.waterLevel -= 1;
-            play(audioDrop[randomInt(0, 2)]);
             this.xpos = randomInt(30, this.cw - 30);
             this.ypos = randomInt(-30, -600);
             if (score <= 0) {

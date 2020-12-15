@@ -546,7 +546,15 @@ export function gameOver() {
     document.getElementById("game").style.display = "none";
     document.getElementById("h2").style.display = "block";
     document.getElementById("h1").style.display = "none";
-    
+
+    playButton.classList.add("start-screen-button-new-game");
+
+    playButton.addEventListener("click", () => {
+        newGame();
+
+        document.getElementById("game").style.display = "grid";
+        document.getElementById("h2").style.display = "none";
+    });
 
     drop1.ypos = randomInt(-30, -250);
     drop2.ypos = randomInt(-30, -250);
@@ -558,5 +566,6 @@ export function gameOver() {
     drop4.speed = 0;
 
 };
+
 
 
