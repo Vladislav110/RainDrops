@@ -69,6 +69,7 @@ const span = document.getElementsByClassName("close")[0];
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("bla").style.display = "none";
+    document.getElementById("rePlayButton").style.display = "none";
 });
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("h2").style.display = "none";
@@ -192,6 +193,7 @@ let drop4 = new DropExp({
 function newGame() {
     document.getElementById("bla").style.display = "block";
     document.getElementById("h1").style.display = "none";
+    document.getElementById("rePlayButton").style.display = "none";
     operandFirst = "";
     display.value = "";
     while (dropAnswer.length > 0) {
@@ -546,10 +548,11 @@ export function gameOver() {
     document.getElementById("game").style.display = "none";
     document.getElementById("h2").style.display = "block";
     document.getElementById("h1").style.display = "none";
+    document.getElementById("rePlayButton").style.display = "block";
+    
+    rePlayButton.classList.add("start-screen-button-replay");
 
-    playButton.classList.add("start-screen-button-new-game");
-
-    playButton.addEventListener("click", () => {
+    rePlayButton.addEventListener("click", () => {
         newGame();
 
         document.getElementById("game").style.display = "grid";
