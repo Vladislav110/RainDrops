@@ -306,4 +306,12 @@ header {
   font-size: 100px;
 }
 
+.start-screen-button-replay {
+  margin: auto;
+  background-color: rgba(194, 179, 96, 0.6);
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 150px;
+  border-radius: 15px;
+}
 
